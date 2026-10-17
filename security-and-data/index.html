@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Q-Guard security and data privacy: on-premise test automation</title>
+<meta name="google-site-verification" content="v4WpWKIWD9j6FqzTJwfpg99kW1VIHUwOTy4-uyuuVHs" />
+<meta name="description" content="How Q-Guard handles data: user input is anonymised at the source, only user journeys are kept, and everything is stored on your own servers." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Q-Guard security and data privacy: on-premise test automation" />
+<meta property="og:url" content="https://q-guard.app/security-and-data/" />
+<meta property="og:description" content="How Q-Guard handles data: user input is anonymised at the source, only user journeys are kept, and everything is stored on your own servers." />
+<meta property="og:site_name" content="Q-Guard " />
+<meta property="og:image" content="https://q-guard.app/assets/images/imac-mockup-with-a-backdrop-a12634-2.png" />
+<meta property="og:image:width" content="1920" />
+<meta property="og:image:height" content="1440" />
+<meta property="og:image:alt" content="Q-Guard dashboard with action types, patterns, test cases and test reports" />
+<meta property="og:locale" content="en_GB" />
+<meta name="twitter:text:title" content="Q-Guard security and data privacy: on-premise test automation" />
+<meta name="twitter:image" content="https://q-guard.app/assets/images/imac-mockup-with-a-backdrop-a12634-2.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="canonical" href="https://q-guard.app/security-and-data/" />
+<link rel="icon" href="../assets/images/cropped-Q_01-4-1.png" sizes="32x32" />
+<link rel="icon" href="../assets/images/cropped-Q_01-4-1.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="../assets/images/cropped-Q_01-4-1.png" />
+<link rel="stylesheet" href="../assets/css/main.css" />
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://q-leap.eu/#organization",
+   "name": "Q-Leap SA",
+   "url": "https://q-leap.eu/",
+   "email": "contact@q-leap.eu",
+   "telephone": "+352 20 21 17",
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "10B Rue des Mérovingiens",
+    "postalCode": "8070",
+    "addressLocality": "Bertrange",
+    "addressCountry": "LU"
+   },
+   "sameAs": [
+    "https://www.linkedin.com/company/3037496/",
+    "https://q-bot.eu/"
+   ]
+  },
+  {
+   "@type": "SoftwareApplication",
+   "@id": "https://q-guard.app/#software",
+   "name": "Q-Guard",
+   "url": "https://q-guard.app/",
+   "applicationCategory": "DeveloperApplication",
+   "description": "Q-Guard observes how real users move through a web application, anonymises that data at the source and turns the journeys they repeat into test cases and Selenium scripts in Java, C#, Ruby or Python. Installed on the customer's own servers.",
+   "featureList": [
+    "Test cases generated from real user journeys",
+    "Selenium script export in Java, C#, Ruby and Python",
+    "On-premise installation, data kept on the customer's servers",
+    "Anonymisation at the source",
+    "CI integration"
+   ],
+   "publisher": {
+    "@id": "https://q-leap.eu/#organization"
+   },
+   "sameAs": [
+    "https://chromewebstore.google.com/detail/q-guard-test-runner/aefoifepleogeiicaclpdldfjppdpjbd"
+   ]
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://q-guard.app/security-and-data/#webpage",
+   "url": "https://q-guard.app/security-and-data/",
+   "name": "Q-Guard security and data privacy: on-premise test automation",
+   "description": "How Q-Guard handles data: user input is anonymised at the source, only user journeys are kept, and everything is stored on your own servers.",
+   "inLanguage": "en-GB",
+   "about": {
+    "@id": "https://q-guard.app/#software"
+   },
+   "publisher": {
+    "@id": "https://q-leap.eu/#organization"
+   },
+   "breadcrumb": {
+    "@id": "https://q-guard.app/security-and-data/#breadcrumb"
+   },
+   "dateModified": "2026-10-08"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://q-guard.app/security-and-data/#breadcrumb",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Q-Guard",
+     "item": "https://q-guard.app/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Security & data",
+     "item": "https://q-guard.app/security-and-data/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://q-guard.app/security-and-data/#faq",
+   "isPartOf": {
+    "@id": "https://q-guard.app/security-and-data/#webpage"
+   },
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "What data does Q-Guard collect?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Q-Guard collects the sequences of actions users perform in your web application, called sessions. It does not keep the values users type: its data collector drops them before storage and keeps only the user journey."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does Q-Guard record what users type?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. Each value a user types during a session is dropped by the Q-Guard data collector before anything is stored. Q-Guard keeps the sequence of actions, not the content of the inputs."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Where is Q-Guard data stored?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "On your own servers. Q-Guard is currently available only as an on-premise installation, so user journeys, test cases and reports are stored on infrastructure you operate."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does Q-Guard send data to Q-Leap?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Q-Guard stores its data on your servers, and no sensitive data is stored on Q-Leap’s side. If your security policy requires the list of network connections of your installation, ask the Q-Leap team during a demo."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can Q-Guard run on-premise only?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Q-Guard is installed on your own infrastructure, and on-premise is currently its only deployment model. A hosted SaaS version is planned. If your installation must run without internet access, raise it with the Q-Leap team during a demo."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is Q-Guard designed for GDPR requirements?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Q-Guard is designed with GDPR requirements in mind: it minimises the data it keeps, anonymises user input at the source and stores its data on your own servers. Assessing the compliance of your processing remains the responsibility of your organisation."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does Q-Guard slow down my application?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Q-Guard is designed to capture user journeys without affecting the performance of your application or infrastructure. You can check this on your own application during a trial, before subscribing."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How long does a Q-Guard installation take?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The Q-Leap team installs Q-Guard in your environment. Installation is included in the yearly licence and typically takes less than one day."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body class="wp-singular page-template-default page page-id-19264 wp-custom-logo wp-theme-stratusx wp-child-theme-stratusx-child ehf-template-stratusx ehf-stylesheet-stratusx-child elementor-default elementor-kit-19626 elementor-page elementor-page-19264 th-sticky-header">
+        <!-- Preloader Start -->
+        <div id="loader-wrapper">
+            <div id="loader"></div>
+            <div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+        </div>
+        <!-- Preloader End -->
+<header class="banner navbar navbar-default navbar-static-top dark-header" role="banner" data-transparent-header="true">
+    	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div id="logo">
+                <a href="../">
+                   	                        <img data-rjs="2" class="logo-trans logo-reg" src="../assets/images/QGUARD-logo_white.png"  height='40' width='159'  alt="Q-Guard " />
+                                        <img data-rjs="2" class="logo-main logo-reg" src="../assets/images/QGUARD-logo_white.png"  height='40' width='159'   alt="Q-Guard " />
+				</a>
+            </div>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul id="menu-stratus-one-page" class="nav navbar-nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20331"><a href="../about-us/">About</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20210"><a href="../features/">Features</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="../how-it-works/">How it works</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20051"><a href="../support-help-faq/">Support / Help / FAQ</a></li>
+<li class="th-accent menu-item menu-item-type-custom menu-item-object-custom menu-item-19161"><a href="https://outlook.office.com/bookwithme/user/879a650824b34d0185ce7d5c9d61e335%40q-leap.eu/meetingtype/09705449-c7ee-4131-b1b9-3e961b18baf2?anonymous">Book a demo</a></li>
+</ul>        </nav>
+	</div>
+</header>
+  <div class="wrap" role="document">
+    <div class="content">
+<div class="inner-container">
+        <section class="content-editor">
+    		<div data-elementor-type="wp-post" data-elementor-id="19264" class="elementor elementor-19264" data-elementor-post-type="page">
+						<section class="elementor-section elementor-top-section elementor-element elementor-element-40cd0fe qg-security-hero elementor-section-height-min-height elementor-section-boxed elementor-section-height-default elementor-section-items-middle" data-id="40cd0fe" data-element_type="section" data-e-type="section" data-settings="{&quot;background_background&quot;:&quot;gradient&quot;}">
+							<div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-fcdfb73" data-id="fcdfb73" data-element_type="column" data-e-type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-e0a5de9 elementor-view-default elementor-position-top elementor-invisible elementor-widget elementor-widget-themo-header" data-id="e0a5de9" data-element_type="widget" data-e-type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}" data-widget_type="themo-header.default">
+				<div class="elementor-widget-container">
+							<div class="th-header-wrap">
+        <div class="elementor-icon-box-wrapper ">
+                            <div class="elementor-icon-box-content">
+                    <h1 class="elementor-icon-box-title">Security and data privacy for <span class="qg-nowrap">on-premise</span> test automation</h1>
+                                        <p class="elementor-icon-box-description">Q-Guard turns the journeys real users take through your web application into automated tests, without keeping what they type.</p>
+                    <ul class="qg-hero-facts" aria-label="Key facts"><li>Installed on-premise, on your own servers</li><li>User input anonymised at the source, before storage</li><li>Only user journeys are kept</li><li>No sensitive data stored on Q-Leap&#8217;s side</li></ul>
+                                    </div>
+            </div>
+        </div>
+						</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				<div class="qg-security">
+<nav class="qg-security__toc" aria-label="On this page">
+<div class="qg-security__inner">
+<p class="qg-security__toc-label">On this page</p>
+<ul>
+<li><a href="#data-flow">Data flow</a></li>
+<li><a href="#data-captured">Data captured</a></li>
+<li><a href="#anonymisation">Anonymisation</a></li>
+<li><a href="#data-storage">Storage</a></li>
+<li><a href="#gdpr">GDPR</a></li>
+<li><a href="#performance">Performance</a></li>
+<li><a href="#deployment">Deployment</a></li>
+<li><a href="#faq">FAQ</a></li>
+</ul>
+</div>
+</nav>
+<section class="qg-security__section qg-security__section--primary" id="data-flow" aria-labelledby="data-flow-title">
+<div class="qg-security__inner">
+<div class="qg-security__heading">
+<span class="qg-security__icon" aria-hidden="true"><i class="far fa-eye"></i></span>
+<h2 class="qg-security__title" id="data-flow-title">How does Q-Guard protect your data?</h2>
+</div>
+<p class="qg-security__answer">Q-Guard keeps the path users take through your application, not the values they enter. User input is removed in the data collector before anything is stored, and what remains is stored on your own servers.</p>
+<div class="qg-flow">
+<div class="qg-flow__zone qg-flow__zone--source">
+<p class="qg-flow__zone-label">At the source</p>
+<ol class="qg-flow__steps">
+<li class="qg-flow__step"><span class="qg-flow__name"><span class="qg-flow__num" aria-hidden="true">1</span>Your users</span><span class="qg-flow__text">use your web application, in production or in a test environment.</span></li>
+<li class="qg-flow__step"><span class="qg-flow__name"><span class="qg-flow__num" aria-hidden="true">2</span>Data collector</span><span class="qg-flow__text">records each visit as a session: the sequence of actions a user performs.</span></li>
+<li class="qg-flow__step qg-flow__step--key"><span class="qg-flow__name"><span class="qg-flow__num" aria-hidden="true">3</span>Anonymisation</span><span class="qg-flow__text">the collector drops every value users type, before anything is stored.</span></li>
+</ol>
+</div>
+<div class="qg-flow__zone qg-flow__zone--servers">
+<p class="qg-flow__zone-label">On your servers</p>
+<ol class="qg-flow__steps" start="4">
+<li class="qg-flow__step"><span class="qg-flow__name"><span class="qg-flow__num" aria-hidden="true">4</span>User journeys</span><span class="qg-flow__text">the anonymised sequences of actions are stored on your servers.</span></li>
+<li class="qg-flow__step"><span class="qg-flow__name"><span class="qg-flow__num" aria-hidden="true">5</span>Test cases</span><span class="qg-flow__text">Q-Guard detects repeated journeys and generates test cases and Selenium scripts from them.</span></li>
+</ol>
+</div>
+</div>
+<p class="qg-security__note">Steps 4 and 5 run on your own servers, where Q-Guard is installed. The full product workflow is described in <a href="../how-it-works/">how Q-Guard generates test cases from real user journeys</a>.</p>
+</div>
+</section>
+<section class="qg-security__section qg-security__section--alt" id="data-captured" aria-labelledby="data-captured-title">
+<div class="qg-security__inner">
+<div class="qg-security__heading">
+<span class="qg-security__icon" aria-hidden="true"><i class="far fa-file-code"></i></span>
+<h2 class="qg-security__title" id="data-captured-title">What data does Q-Guard capture?</h2>
+</div>
+<p class="qg-security__answer">Q-Guard captures sequences of user actions, called sessions. It does not keep the values users type, and everything it stores stays on your servers.</p>
+<div class="qg-table-wrap" role="region" aria-labelledby="data-table-caption" tabindex="0">
+<table class="qg-table">
+<caption id="data-table-caption">Data handled by Q-Guard</caption>
+<thead>
+<tr><th scope="col">Data</th><th scope="col">Recorded</th><th scope="col">Kept</th><th scope="col">Stored on</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">Sequences of user actions (sessions)</th><td>Yes</td><td>Yes, as anonymised user journeys</td><td>Your servers</td></tr>
+<tr class="qg-table__row--key"><th scope="row">Values users type (user input)</th><td>No, dropped by the data collector</td><td>No</td><td>Not stored</td></tr>
+<tr><th scope="row">Usage patterns (sequences of action types)</th><td>Derived from user journeys</td><td>Yes</td><td>Your servers</td></tr>
+<tr><th scope="row">Test cases and Selenium scripts</th><td>Generated by Q-Guard</td><td>Yes</td><td>Your servers</td></tr>
+<tr><th scope="row">Test reports and dashboard</th><td>Generated by Q-Guard</td><td>Yes</td><td>Your servers</td></tr>
+</tbody>
+</table>
+</div>
+<p class="qg-security__note">A session is the sequence of actions a user performs during a single visit; a pattern is a sequence of action types used to model a usage and create a test case. More definitions are in the <a href="../support-help-faq/">Q-Guard FAQ</a>.</p>
+</div>
+</section>
+<section class="qg-security__section qg-security__section--primary" id="anonymisation" aria-labelledby="anonymisation-title">
+<div class="qg-security__inner">
+<div class="qg-security__heading">
+<span class="qg-security__icon" aria-hidden="true"><i class="fasth-linea icon-basic-lock"></i></span>
+<h2 class="qg-security__title" id="anonymisation-title">How does Q-Guard anonymise user input?</h2>
+</div>
+<p class="qg-security__answer">In the data collector, at the moment of capture: each value a user types during a session is dropped before anything is stored, and only the user journey is retained.</p>
+<dl class="qg-facts">
+<div class="qg-facts__item qg-facts__item--removed"><dt>What is removed</dt><dd>Every user input from the session: the values users type into your application.</dd></div>
+<div class="qg-facts__item"><dt>When</dt><dd>Upstream, before any data is stored.</dd></div>
+<div class="qg-facts__item"><dt>Where</dt><dd>In the Q-Guard data collector, at the source.</dd></div>
+<div class="qg-facts__item qg-facts__item--kept"><dt>What is kept</dt><dd>The user journey: the sequence of actions, which Q-Guard uses to detect repeated usage and generate test cases.</dd></div>
+</dl>
+</div>
+</section>
+<section class="qg-security__section qg-security__section--highlight" id="data-storage" aria-labelledby="data-storage-title">
+<div class="qg-security__inner">
+<div class="qg-security__heading">
+<span class="qg-security__icon" aria-hidden="true"><i class="fasth-linea icon-basic-laptop"></i></span>
+<h2 class="qg-security__title" id="data-storage-title">Where is Q-Guard data stored?</h2>
+</div>
+<p class="qg-security__answer">On your own servers. Q-Guard is currently available only as an on-premise installation, so the user journeys, test cases and reports it produces are stored on infrastructure you operate.</p>
+<h3 class="qg-security__subtitle">Does Q-Leap store my application or user data?</h3>
+<p>No sensitive data is stored on Q-Leap&#8217;s side: the data Q-Guard collects stays on your servers. A hosted SaaS version is planned; until it is available, on-premise is the only deployment model. See <a href="../licence-and-trial/">Q-Guard licence and deployment options</a>.</p>
+</div>
+</section>
+<section class="qg-security__section qg-security__section--primary" id="gdpr" aria-labelledby="gdpr-title">
+<div class="qg-security__inner">
+<div class="qg-security__heading">
+<span class="qg-security__icon" aria-hidden="true"><i class="fas fa-users-cog"></i></span>
+<h2 class="qg-security__title" id="gdpr-title">How does Q-Guard support GDPR and data minimisation?</h2>
+</div>
+<p class="qg-security__answer">Q-Guard is designed with GDPR requirements in mind. It does not make your processing compliant on its own; it reduces the personal data involved in test automation through four mechanisms.</p>
+<ul class="qg-principles">
+<li><strong>Data minimisation.</strong> Only the sequence of actions is kept; the values users type are not.</li>
+<li><strong>Anonymisation at the source.</strong> User input is removed in the data collector, before storage.</li>
+<li><strong>Storage location.</strong> Q-Guard data is stored on your own servers, not by Q-Leap.</li>
+<li><strong>Customer-controlled infrastructure.</strong> Q-Guard data sits on infrastructure you operate, under the access, backup and retention rules you already apply to it.</li>
+</ul>
+<p class="qg-security__note">Your data protection officer can review this data flow with the Q-Leap team during a demo.</p>
+</div>
+</section>
+<div class="qg-security__section qg-security__section--alt qg-security__section--compact">
+<div class="qg-security__inner qg-ops">
+<section class="qg-ops__item" id="performance" aria-labelledby="performance-title">
+<div class="qg-security__heading">
+<span class="qg-security__icon" aria-hidden="true"><i class="th-linea icon th-linea icon-arrows-clockwise-dashed"></i></span>
+<h2 class="qg-security__title" id="performance-title">Does Q-Guard affect application performance?</h2>
+</div>
+<p class="qg-security__answer">Q-Guard is designed to observe how users move through your application without affecting the performance of your application or infrastructure.</p>
+<p>Because Q-Guard runs on your own servers, you can check its footprint in your own environment: the trial lets your team test Q-Guard on its own application before subscribing.</p>
+</section>
+<section class="qg-ops__item" id="deployment" aria-labelledby="deployment-title">
+<div class="qg-security__heading">
+<span class="qg-security__icon" aria-hidden="true"><i class="fas fa-download"></i></span>
+<h2 class="qg-security__title" id="deployment-title">How is Q-Guard deployed and installed?</h2>
+</div>
+<p class="qg-security__answer">On-premise, by the Q-Leap team. Q-Guard is sold as an annual licence installed on your own infrastructure; installation is included in the licence and typically takes less than one day.</p>
+<ol class="qg-steps">
+<li><strong>Demo.</strong> See Q-Guard and discuss your environment and security requirements.</li>
+<li><strong>Trial.</strong> Test Q-Guard on your own application before subscribing.</li>
+<li><strong>Installation.</strong> The Q-Leap team installs Q-Guard in your environment, included in the yearly licence.</li>
+<li><strong>Support.</strong> Documentation and ongoing technical support are included in the licence.</li>
+</ol>
+<p class="qg-security__note">Pricing depends on your environment and is shared on request: see <a href="../licence-and-trial/">what the Q-Guard licence includes</a>.</p>
+</section>
+</div>
+</div>
+<section class="qg-security__section qg-security__section--faq" id="faq" aria-labelledby="faq-title">
+<div class="qg-security__inner">
+<h2 class="qg-security__title qg-security__title--plain" id="faq-title">Security and privacy FAQ</h2>
+<div class="qg-faq">
+<div class="qg-faq__item">
+<h3 class="qg-faq__question">What data does Q-Guard collect?</h3>
+<p>Q-Guard collects the sequences of actions users perform in your web application, called sessions. It does not keep the values users type: its data collector drops them before storage and keeps only the user journey.</p>
+</div>
+<div class="qg-faq__item">
+<h3 class="qg-faq__question">Does Q-Guard record what users type?</h3>
+<p>No. Each value a user types during a session is dropped by the Q-Guard data collector before anything is stored. Q-Guard keeps the sequence of actions, not the content of the inputs.</p>
+</div>
+<div class="qg-faq__item">
+<h3 class="qg-faq__question">Where is Q-Guard data stored?</h3>
+<p>On your own servers. Q-Guard is currently available only as an on-premise installation, so user journeys, test cases and reports are stored on infrastructure you operate.</p>
+</div>
+<div class="qg-faq__item">
+<h3 class="qg-faq__question">Does Q-Guard send data to Q-Leap?</h3>
+<p>Q-Guard stores its data on your servers, and no sensitive data is stored on Q-Leap&#8217;s side. If your security policy requires the list of network connections of your installation, ask the Q-Leap team during a demo.</p>
+</div>
+<div class="qg-faq__item">
+<h3 class="qg-faq__question">Can Q-Guard run on-premise only?</h3>
+<p>Yes. Q-Guard is installed on your own infrastructure, and on-premise is currently its only deployment model. A hosted SaaS version is planned. If your installation must run without internet access, raise it with the Q-Leap team during a demo.</p>
+</div>
+<div class="qg-faq__item">
+<h3 class="qg-faq__question">Is Q-Guard designed for GDPR requirements?</h3>
+<p>Yes. Q-Guard is designed with GDPR requirements in mind: it minimises the data it keeps, anonymises user input at the source and stores its data on your own servers. Assessing the compliance of your processing remains the responsibility of your organisation.</p>
+</div>
+<div class="qg-faq__item">
+<h3 class="qg-faq__question">Does Q-Guard slow down my application?</h3>
+<p>Q-Guard is designed to capture user journeys without affecting the performance of your application or infrastructure. You can check this on your own application during a trial, before subscribing.</p>
+</div>
+<div class="qg-faq__item">
+<h3 class="qg-faq__question">How long does a Q-Guard installation take?</h3>
+<p>The Q-Leap team installs Q-Guard in your environment. Installation is included in the yearly licence and typically takes less than one day.</p>
+</div>
+</div>
+<p class="qg-security__note">Questions about licensing, support or test reports are answered in the <a href="../support-help-faq/">Q-Guard support FAQ</a>.</p>
+</div>
+</section>
+</div>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-ep854fg qg-security-cta elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="ep854fg" data-element_type="section" data-e-type="section" data-settings="{&quot;background_background&quot;:&quot;gradient&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-dvjchmk" data-id="dvjchmk" data-element_type="column" data-e-type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-9ep469q elementor-widget elementor-widget-spacer" data-id="9ep469q" data-element_type="widget" data-e-type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-o9cuy6j elementor-widget elementor-widget-themo-call-to-action" data-id="o9cuy6j" data-element_type="widget" data-e-type="widget" data-widget_type="themo-call-to-action.default">
+				<div class="elementor-widget-container">
+							<div class="th-cta">
+					        <div class="th-cta-text">
+		            <span>See how Q-Guard fits your security requirements</span>
+		        </div>
+                        <div class="th-cta-btn">
+                                    <a class="btn-1 btn th-btn btn-standard-light" href="https://outlook.office.com/bookwithme/user/879a650824b34d0185ce7d5c9d61e335%40q-leap.eu/meetingtype/09705449-c7ee-4131-b1b9-3e961b18baf2?anonymous">Book a security-focused demo</a>
+                                    <a class="btn-2 btn th-btn btn-ghost-light" href="../support-help-faq/">Read the FAQ</a>
+                            </div>
+            		</div>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-gcu94cv elementor-widget elementor-widget-spacer" data-id="gcu94cv" data-element_type="widget" data-e-type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+							<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+						</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				</div>
+		    </section>    
+	<div class="container">        <div class="row">
+			<div class="col-md-12">
+            </div>
+        </div>
+    </div>    
+    </div>
+    </div>
+  </div>
+<div class="prefooter"></div>
+<footer class="footer" role="contentinfo">
+	<div class="container">
+							<div class="footer-widgets row th-widget-area">
+              	                    <div class="footer-area-1 col-md-3 col-sm-6">
+                    <section class="widget text-2 widget_text"><div class="widget-inner"><h3 class="widget-title">About Q-Guard</h3>			<div class="textwidget"><p>Q-Guard, developed by <a href="http://q-leap.eu">Q-leap</a> in Luxembourg, automates test case creation based on real user behavior to streamline testing processes.</p>
+</div>
+		</div></section>                    </div>
+                                                    <div class="footer-area-2 col-md-3 col-sm-6">
+                    <section class="widget nav_menu-2 widget_nav_menu"><div class="widget-inner"><h3 class="widget-title">Links</h3><div class="menu-links-container"><ul id="menu-links" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-20839"><a href="../contact/">Contact us</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="../how-it-works/">How it works</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="../security-and-data/">Security &amp; data</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="../licence-and-trial/">Licence &amp; trial</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-20838"><a rel="privacy-policy" href="../privacy-policy/">Privacy Policy</a></li>
+<li class="menu-item menu-item-type-custom"><a href="../fr/" hreflang="fr" lang="fr">Version française</a></li>
+</ul></div></div></section>
+        		<section class="widget widget-social">
+    		<div class="widget-inner">
+        		                <h3 class="widget-title">Follow us</h3>
+                        			<div class="soc-widget">
+        			<a target=_blank rel=noopener aria-label='Q-Leap on LinkedIn' href='https://www.linkedin.com/company/3037496/'><i class='fa fa-linkedin'></i></a>           			</div>
+    			</div>
+		</section>
+		                    </div>
+                                                     <div class="footer-area-3 col-md-3 col-sm-6">
+				<section class="widget widget-th-contact-info">
+			<div class="widget-inner">
+									<h3 class="widget-title">Contact Us</h3>
+								<div class="th-contact-info-widget">
+					<div class='icon-blocks'><div class="icon-block"><p><a target='_blank' href='mailto:contact@q-leap.eu'><i class='fa fa-envelope-open-o'></i><span>contact@q-leap.eu</span></a></p></div><div class="icon-block"><p><a target='_blank' href='tel:00352%20202117'><i class='fa fa-comment-o'></i><span>+352 20 21 17</span></a></p></div><div class="icon-block"><p><a  href='https://www.google.com/maps/search/?api=1&amp;query=Q-Leap%2C%2010B%20Rue%20des%20M%C3%A9rovingiens%2C%208070%20Bertrange%2C%20Luxembourg'><i class='fa fa-map-o'></i><span>Location</span></a></p></div></div>				</div>
+			</div>
+		</section>
+		                    </div>
+                                                     <div class="footer-area-4 col-md-3 col-sm-6">
+                    <section class="widget frm_show_form-9 widget_frm_show_form"><div class="widget-inner"><div class="frm_form_widget"><h3 class="widget-title">Ask a Free Demo </h3><div class="frm_forms  with_frm_style frm_style_formidable-style" id="frm_form_2_container" >
+<form enctype="multipart/form-data" method="post" class="frm-show-form " id="form_2ssykv" data-endpoint="https://formsubmit.co/ajax/contact@q-leap.eu" >
+<input type="hidden" name="_subject" value="Q-Guard website: demo request" />
+<input type="hidden" name="_captcha" value="false" />
+<input type="hidden" name="_template" value="table" />
+<div class="frm_form_fields ">
+<fieldset>
+<div class="frm_fields_container">
+<div id="frm_field_6_container" class="frm_form_field form-field  frm_none_container">
+    <label for="field_qy05f8" class="frm_primary_label">Name
+        <span class="frm_required"></span>
+    </label>
+    <input type="text" id="field_qy05f8" name="item_meta[6]" value=""  placeholder="Name" data-invmsg="Name is invalid" aria-invalid="false"  />
+</div>
+<div id="frm_field_7_container" class="frm_form_field form-field  frm_required_field frm_none_container">
+    <label for="field_3asv29" class="frm_primary_label">Email Address
+        <span class="frm_required">*</span>
+    </label>
+    <input type="text" id="field_3asv29" name="item_meta[7]" value=""  placeholder="Email Address" data-reqmsg="Email Address cannot be blank." aria-required="true" data-invmsg="Email Address is invalid" aria-invalid="false"  />
+</div>
+<div id="frm_field_8_container" class="frm_form_field form-field  frm_required_field frm_none_container">
+    <label for="field_2ywico" class="frm_primary_label">Question / Comment
+        <span class="frm_required">*</span>
+    </label>
+    <input type="text" id="field_2ywico" name="item_meta[8]" value=""  placeholder="Question / Comment" data-reqmsg="Question / Comment cannot be blank." aria-required="true" data-invmsg="Question / Comment is invalid" aria-invalid="false"  />
+</div>
+<div id="frm_field_54_container" class="frm_form_field form-field  frm_top_container">
+	<span id="field_lclob_label" class="frm_primary_label">Captcha
+		<span class="frm_required" aria-hidden="true"></span>
+	</span>
+	<div  id="field_lclob" class="frm-g-recaptcha" data-sitekey="6LdvlHwqAAAAAGcoGEBUJCWIgnOwrMpUjiHdtK4B" data-size="normal" data-theme="dark"></div>
+</div>
+<div id="frm_field_45_container" class="frm_form_field form-field ">
+	<div class="frm_submit">
+<input type="submit" value="Send"  />
+<img class="frm_ajax_loading" src="../assets/images/ajax_loader.gif" alt="Sending" style="visibility:hidden;" />
+</div>
+</div>
+			<div id="frm_field_56_container">
+			<label for="field_h8xaw" >
+				If you are human, leave this field blank.			</label>
+			<input  id="field_h8xaw" type="text" class="frm_form_field form-field frm_verify" name="item_meta[56]" value=""  />
+		</div>
+		<input name="frm_state" type="hidden" value="6TkuA9GDXQXvAI/4TGyPIY0uor/TvdIhtUpYeRNqOxs=" /></div>
+</fieldset>
+</div>
+</form>
+</div>
+</div></div></section>                    </div>
+                				</div>
+			    </div>
+    <div class="footer-btm-bar">        
+        <div class="container">    
+            <div class="footer-copyright row">
+                <div class="col-xs-12">
+                    <p>  <span class="footer_credit">Q-LEAP SA © 2024. All Rights Reserved. Made with <i class="fa fa-heart-o"></i> by <a href="https://digital.q-leap.eu/">Q-DIGITAL</a></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/swiper@8.4.5/swiper-bundle.min.js" defer></script>
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>
